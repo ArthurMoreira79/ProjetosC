@@ -1,0 +1,14 @@
+101, Cheeseburger, 15.50, Lanche  
+102, Duplo Bacon, 21.90, Lanche  
+103, Veggie Burger, 17.00, Lanche Vegetariano  
+201, Coca-Cola, 7.00, Bebida  
+202, Suco Natural, 8.50, Bebida  
+203, Milkshake Morango, 12.00, Bebida  
+301, Batata Média, 8.00, Acompanhamento  
+302, Batata Grande, 9.90, Acompanhamento  
+303, Onion Rings, 10.50, Acompanhamento  
+401, Casquinha de Baunilha, 5.00, Sobremesa  
+402, Sundae Chocolate, 8.50, Sobremesa  
+501, Combo Clássico, 28.90, Combo  
+502, Combo Duplo Bacon, 33.90, Combo  
+503, Combo Veggie, 29.90, Combo Vegetariano

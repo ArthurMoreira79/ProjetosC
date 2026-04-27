@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug teste_fila",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/teste_fila.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+            "preLaunchTask": "C/C++: gcc.exe Build Multi-File (TAD Lista)"
+        },
+        {
+            "name": "Debug teste_pedido",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/teste_pedido.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+            "preLaunchTask": "C/C++: gcc.exe Build TAD Lanche Teste"
+        }
+    ]
+}

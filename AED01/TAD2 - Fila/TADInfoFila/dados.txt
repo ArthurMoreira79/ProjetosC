@@ -1,0 +1,7 @@
+1;Pedro Lucas;08:30;1;120.50;expressa
+2;Joao Pedro;09:10;2;89.90;normal
+3;Pedro Geromel;09:45;3;240.00;expressa
+4;Walter Kannemann;10:05;1;315.80;normal
+5;Willian;10:18;2;45.30;expressa
+6;Carlos Vinicius;11:02;3;76.40;expressa
+7;Matias Villasanti;11:30;2;55.00;normal

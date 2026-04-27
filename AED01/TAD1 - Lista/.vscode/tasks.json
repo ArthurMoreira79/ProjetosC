@@ -1,0 +1,47 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe Build Multi-File (TAD Lista)",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "lanche.c",
+                "lista.c",
+                "teste_lista.c",
+                "-o",
+                "${fileDirname}\\teste_lista.exe" 
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tarefa principal para compilar o projeto completo."
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe Build TAD Lanche Teste",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "lanche.c",       // O TAD que o teste usa
+                "teste_lanche.c", // O arquivo de teste
+                "-o",
+                "${fileDirname}\\teste_lanche.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build",
+            "detail": "Tarefa para compilar APENAS o teste do TAD Lanche."
+        }
+    ],
+    "version": "2.0.0"
+}

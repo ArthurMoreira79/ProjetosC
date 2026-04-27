@@ -1,0 +1,90 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Teste Lanche",
+            "type": "cppbuild",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "lanche.c",
+                "teste_lanche.c",
+                "-o",
+                "teste_lanche.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "label": "Build Teste Lista",
+            "type": "cppbuild",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "lanche.c",
+                "lista_encadeada.c",
+                "teste_lista.c",
+                "-o",
+                "teste_lista.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "label": "Build Teste Arvore",
+            "type": "cppbuild",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "arvore.c",
+                "teste_arvore.c",
+                "-o",
+                "teste_arvore.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "label": "Build Experimento",
+            "type": "cppbuild",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "experimento.c",
+                "lanche.c",
+                "lista_encadeada.c",
+                "arvore.c",
+                "-o",
+                "experimento.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "label": "Build Projeto Completo",
+            "dependsOn": [
+                "Build Teste Lanche",
+                "Build Teste Lista",
+                "Build Teste Arvore",
+                "Build Experimento"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
