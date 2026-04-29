@@ -231,7 +231,7 @@ int main(void) {
     srand((unsigned int) time(NULL));
 
     printf("==========================================================\n");
-    printf("  Atividade V: Instrumentacao de Rotacoes AVL\n");
+    printf("  Atividade IV: Instrumentacao de Rotacoes AVL\n");
     printf("  Algoritmos e Estrutura de Dados II\n");
     printf("==========================================================\n");
 
