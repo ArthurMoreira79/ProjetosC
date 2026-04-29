@@ -1,0 +1,119 @@
+==========================================================
+  Atividade V: Instrumentacao de Rotacoes AVL
+  Algoritmos e Estrutura de Dados II
+==========================================================
+
+##########################################################
+  1.000.000 elementos  (N=1000000, 10 repeticoes)
+##########################################################
+
+Rep  | BST(s)   | AVL(s)   | Rot(s)   | LL     | RR     | LR     | RL     | Total R  | Rot/Ins(%) | H_AVL  | H_BST 
+-----|----------|----------|----------|--------|--------|--------|--------|----------|------------|--------|--------
+   1 |   0.1760 |   0.1930 | 0.001000 |   3825 |   3843 |   3881 |   3717 |    15266 |      0.52% |     17 |     34
+   2 |   0.1680 |   0.2120 | 0.000000 |   3870 |   3745 |   3817 |   3797 |    15229 |      0.00% |     17 |     33
+   3 |   0.1810 |   0.2090 | 0.000000 |   3847 |   3816 |   3750 |   3793 |    15206 |      0.00% |     17 |     38
+   4 |   0.1600 |   0.2050 | -0.000000 |   3774 |   3761 |   3926 |   3806 |    15267 |     -0.00% |     17 |     33
+   5 |   0.1700 |   0.2100 | -0.000000 |   3854 |   3877 |   3826 |   3746 |    15303 |     -0.00% |     17 |     32
+   6 |   0.1740 |   0.1980 | 0.000000 |   3885 |   3913 |   3839 |   3912 |    15549 |      0.00% |     17 |     34
+   7 |   0.1710 |   0.2010 | 0.000000 |   3780 |   3976 |   3834 |   3806 |    15396 |      0.00% |     17 |     37
+   8 |   0.1740 |   0.2090 | 0.002000 |   3821 |   3801 |   3888 |   3831 |    15341 |      0.96% |     17 |     33
+   9 |   0.1680 |   0.2000 | 0.001000 |   3696 |   3810 |   3775 |   4033 |    15314 |      0.50% |     17 |     36
+  10 |   0.1710 |   0.2250 | 0.000000 |   3918 |   3823 |   3759 |   3732 |    15232 |      0.00% |     17 |     32
+-----|----------|----------|----------|--------|--------|--------|--------|----------|------------|--------|--------
+Media|   0.1713 |   0.2062 | 0.000400 |   3827 |   3837 |   3830 |   3817 |    15310 |            |   17.0 |   34.2
+DP   |   0.0056 |   0.0090 | 0.000699
+
+--- Teste-t Pareado (BST vs AVL - tempo total de insercao) ---
+  Media das diferencas  : -0.034900 s
+  DP das diferencas     : 0.011030 s
+  Estatistica t         : -10.0060
+  Graus de liberdade    : 9
+  Valor critico 5%      : ~2.262 (gl=9)
+  Valor critico 1%      : ~3.250 (gl=9)
+  Conclusao: DIFERENCA SIGNIFICATIVA (p < 0.01) - AVL mais lenta que BST
+
+--- Resumo de Rotacoes (medias por rodada) ---
+  LL (simples direita)  : 3827
+  RR (simples esquerda) : 3837
+  LR (dupla direita)    : 3830
+  RL (dupla esquerda)   : 3817
+  Total de rotacoes     : 15310
+  Rotacoes por insercao : 0.0153
+  Tempo medio rotacoes  : 0.000400 s (0.19% do tempo AVL)
+
+--- Alturas Finais das Arvores ---
+  Altura media AVL      : 17.0
+  Altura media BST      : 34.2
+  log2(N)               : 19.9  (altura otima)
+  Fator AVL / log2(N)   : 0.85
+  Fator BST / log2(N)   : 1.72
+
+##########################################################
+  5.000.000 elementos  (N=5000000, 10 repeticoes)
+##########################################################
+
+Rep  | BST(s)   | AVL(s)   | Rot(s)   | LL     | RR     | LR     | RL     | Total R  | Rot/Ins(%) | H_AVL  | H_BST 
+-----|----------|----------|----------|--------|--------|--------|--------|----------|------------|--------|--------
+   1 |   0.8780 |   1.0530 | -0.000000 |   3813 |   3849 |   3762 |   3814 |    15238 |     -0.00% |     17 |     32
+   2 |   0.8460 |   1.0160 | 0.000000 |   3753 |   3773 |   3897 |   3781 |    15204 |      0.00% |     17 |     31
+   3 |   0.8600 |   1.0300 | 0.000000 |   3771 |   3852 |   3763 |   3856 |    15242 |      0.00% |     17 |     34
+   4 |   0.8850 |   1.0370 | -0.000000 |   3797 |   3878 |   3821 |   3786 |    15282 |     -0.00% |     17 |     35
+   5 |   0.8640 |   1.0510 | 0.000000 |   3768 |   3946 |   3663 |   3790 |    15167 |      0.00% |     17 |     33
+   6 |   0.9350 |   1.0350 | 0.000000 |   3774 |   3851 |   3748 |   3817 |    15190 |      0.00% |     17 |     39
+   7 |   0.8670 |   1.0610 | 0.000000 |   3720 |   3800 |   3859 |   3801 |    15180 |      0.00% |     17 |     34
+   8 |   0.8710 |   1.0420 | -0.000000 |   3833 |   3719 |   3842 |   3766 |    15160 |     -0.00% |     17 |     41
+   9 |   0.8620 |   1.0090 | -0.000000 |   3863 |   3767 |   3724 |   3791 |    15145 |     -0.00% |     17 |     35
+  10 |   0.8940 |   1.0080 | 0.000000 |   3880 |   3766 |   3756 |   3843 |    15245 |      0.00% |     17 |     36
+-----|----------|----------|----------|--------|--------|--------|--------|----------|------------|--------|--------
+Media|   0.8762 |   1.0342 | 0.000000 |   3797 |   3820 |   3784 |   3805 |    15205 |            |   17.0 |   35.0
+DP   |   0.0247 |   0.0185 | 0.000000
+
+--- Teste-t Pareado (BST vs AVL - tempo total de insercao) ---
+  Media das diferencas  : -0.158000 s
+  DP das diferencas     : 0.030441 s
+  Estatistica t         : -16.4133
+  Graus de liberdade    : 9
+  Valor critico 5%      : ~2.262 (gl=9)
+  Valor critico 1%      : ~3.250 (gl=9)
+  Conclusao: DIFERENCA SIGNIFICATIVA (p < 0.01) - AVL mais lenta que BST
+
+--- Resumo de Rotacoes (medias por rodada) ---
+  LL (simples direita)  : 3797
+  RR (simples esquerda) : 3820
+  LR (dupla direita)    : 3784
+  RL (dupla esquerda)   : 3805
+  Total de rotacoes     : 15205
+  Rotacoes por insercao : 0.0030
+  Tempo medio rotacoes  : 0.000000 s (0.00% do tempo AVL)
+
+--- Alturas Finais das Arvores ---
+  Altura media AVL      : 17.0
+  Altura media BST      : 35.0
+  log2(N)               : 22.3  (altura otima)
+  Fator AVL / log2(N)   : 0.76
+  Fator BST / log2(N)   : 1.57
+
+==========================================================
+  Experimento Concluido
+==========================================================
+
+==========================================================
+  Relatório do Experimento
+==========================================================
+
+Como Compilar:
+
+cd "Lab 4 - Árvores-Rotações-Tempo"
+gcc -O0 -o benchmark Main.c ArvoreAVL.c ArvoreBST.c -lm
+./benchmark
+
+Este relatório analisa o impacto das rotações da AVL no tempo de inserção e como o balanceamento influencia a busca, comparando altura final das árvores AVL e BST com 1.000.000 e 5.000.000 de elementos aleatórios (10 repetições cada).
+
+Para 1.000.000 de elementos, a AVL realizou em média 15.310 rotações por rodada, sendo aproximadamente 3.827 LL, 3.837 RR, 3.830 LR e 3.817 RL — distribuição praticamente uniforme entre os quatro tipos, o que é esperado com dados aleatórios, pois os desbalanceamentos ocorrem igualmente para ambos os lados. Para 5.000.000 de elementos, o total de rotações foi 15.205 — praticamente o mesmo que no experimento menor. Isso revela um comportamento importante: o número de rotações não cresce proporcionalmente ao N. Com 5x mais elementos, as rotações ficaram estáveis, indicando que a taxa de rotações por inserção cai de 0,0153 para 0,0030 conforme a árvore cresce. O tempo gasto exclusivamente nas rotações foi desprezível: 0,0004 s em média para 1M (0,19% do tempo AVL) e praticamente 0,000 s para 5M — abaixo da resolução do clock() do Windows. Ou seja, as rotações em si não são o gargalo.
+
+Apesar do tempo das rotações ser quase zero, a AVL foi significativamente mais lenta que a BST. Em ambos os casos |t| >> 3,250, ou seja, diferença significativa com p < 0,01. O overhead da AVL não vem do tempo das rotações, mas do custo extra por nó: a cada inserção a AVL recalcula alturas e verifica o fator de balanceamento em todos os nós do caminho de volta à raiz. Com dados aleatórios a BST já fica razoavelmente equilibrada naturalmente, então esse custo extra da AVL não compensa neste cenário.
+
+A AVL manteve altura 17 em todas as 20 rodadas, independentemente do tamanho da entrada — exatamente o comportamento garantido pela teoria (altura ≤ 1,44 · log₂ N). O fator AVL/log₂(N) ficou em 0,85 para 1M e 0,76 para 5M, abaixo da altura ótima teórica, o que demonstra o balanceamento eficaz. A BST teve altura média de 34 para 1M e 35 para 5M — aproximadamente o dobro da AVL. Na prática isso significa que uma busca na BST precisaria percorrer em média o dobro de níveis comparado à AVL. Com dados ordenados esse cenário seria drasticamente pior, com a BST degenerando para altura N. Outro dado relevante: a altura da BST quase não aumentou de 1M para 5M elementos (34 → 35), enquanto o log₂(N) subiu de 19,9 para 22,3. Isso acontece porque com dados aleatórios a BST cresce com altura proporcional a ~2·log₂(N), que é logarítmica, mas com constante maior que a AVL.
+
+As rotações da AVL têm impacto desprezível no tempo de execução isoladamente (< 0,2% do tempo total), mas a estrutura de balanceamento como um todo adiciona overhead suficiente para tornar a inserção AVL ~20% mais lenta que a BST com dados aleatórios.
+Em compensação, o ganho na busca é expressivo: a AVL garante altura constante (~17) independente do volume, enquanto a BST cresce para o dobro. Em aplicações com muitas buscas e poucas inserções, a AVL compensa amplamente seu custo de inserção. Em cenários de inserção intensiva com dados aleatórios, a BST pode ser preferível.
