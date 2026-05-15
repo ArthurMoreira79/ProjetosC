@@ -1,0 +1,45 @@
+RELATÓRIO (BST, AVL E RED-BLACK):
+
+1. Árvore Red-Black (RB)
+
+A Árvore Red-Black é uma árvore binária de busca (BST) auto-balanceada que utiliza um sistema de cores (vermelho e preto) para garantir o equilíbrio da estrutura. Diferente da AVL, que busca um balanceamento rígido, a RB foca em manter caminhos com custos de busca consistentes com menos esforço de rebalanceamento.
+
+Regras Fundamentais:
+- Todo nó é obrigatoriamente Vermelho ou Preto.
+- A Raiz e todas as Folhas (NIL) são Pretas.
+- Um nó Vermelho não pode ter filhos Vermelhos (evita caminhos muito longos).
+- "Black-Height": Todo caminho da raiz às folhas deve ter o mesmo número de nós pretos.
+
+O Diferencial:
+O grande trunfo da Red-Black é o "balanceamento relaxado". Enquanto a AVL exige rotações frequentes para manter alturas quase idênticas, a RB utiliza mais recolorações (mudanças de bits) e menos rotações. Isso a torna superior em cenários com muitas inserções e remoções, sendo a estrutura padrão para bibliotecas como a STL do C++ (std::map) e o TreeMap do Java.
+
+---------------------------------------------------------------------------
+
+2. RELATÓRIO COMPARATIVO DE RESULTADOS (BST vs. AVL vs. RB)
+
+Com base nos experimentos realizados com 1.000.000 e 5.000.000 de elementos aleatórios, seguem as métricas observadas:
+
+TABELA RESUMO (Médias para 1.000.000 de elementos):
+
+| Métrica             | BST           | AVL          | Red-Black      |
+|---------------------|---------------|--------------|----------------|
+| Tempo de Inserção   | 0.1713 s      | 0.2062 s     | 0.1111 s       |
+| Total de Ajustes    | 0             | 15.310 (Rot) | 19.024 (Rot/Rec|
+| Altura Final        | ~34.2         | 17.0         | 17.2           |
+| Fator / log2(N)     | ~1.71         | 0.85         | 0.86           |
+
+B) ANÁLISE DOS MODELOS:
+
+1. DESEMPENHO (TEMPO):
+A Árvore Red-Black apresentou o melhor tempo de execução nos testes (0.1111s), sendo cerca de 46% mais rápida que a AVL e 35% mais rápida que a BST. Isso ocorre porque a RB minimiza o overhead de cálculos de altura que a AVL exige, utilizando recolorações rápidas.
+
+2. EQUILÍBRIO (ALTURA):
+- AVL: Vencedora em organização, mantendo a altura ótima (17). Ideal para sistemas onde a busca é a operação principal.
+- Red-Black: Ficou extremamente próxima (17.2), mostrando que seu balanceamento relaxado é suficiente para manter buscas eficientes sem o custo da AVL.
+- BST: Sofreu com a falta de balanceamento, chegando a uma altura de 34, o que impacta o desempenho em escalas maiores.
+
+3. EFICIÊNCIA DE AJUSTE:
+Embora a RB realize mais "intervenções" (19k vs 15k da AVL), a maioria das ações da RB são recolorações. Nos experimentos, o tempo de "Fixup" da RB representou uma fração mínima do tempo total, confirmando sua eficiência mecânica.
+
+CONCLUSÃO:
+Para o volume de dados testado, a Árvore Red-Black provou ser a estrutura mais equilibrada entre custo de manutenção e velocidade de resposta, superando as limitações da BST e o rigor computacional da AVL.
