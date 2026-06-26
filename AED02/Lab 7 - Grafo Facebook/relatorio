@@ -1,0 +1,42 @@
+RELATÓRIO - ATIVIDADE VIII (PARTE II)
+Rede de Amizades do Facebook - Algoritmos e Estrutura de Dados II
+
+1. OBJETIVO
+
+Reaproveitar a estrutura de grafo (lista de adjacencia) implementada na Atividade I para carregar a rede de amizades do Facebook (4039 usuarios, 88234 amizades) e responder, para qualquer par de usuarios: quantos amigos cada um tem, quais amigos tem em comum e qual o caminho de amigos mais curto entre eles.
+
+2. ESTRUTURA REAPROVEITADA DA ATIVIDADE I
+
+O grafo continua representado como lista de adjacencia: um vetor de listas encadeadas, uma por vertice, em que cada no da lista guarda o vertice destino, o peso da aresta e um ponteiro para o proximo. Essa escolha consome muito menos memoria do que uma matriz de adjacencia, o que e essencial aqui (uma matriz 4039x4039 teria mais de 16 milhoes de celulas). As funcoes criar_grafo, inserir_aresta e destruir_grafo foram reaproveitadas sem nenhuma alteracao. O grafo foi criado como nao direcionado, pois amizade no Facebook e uma relacao mutua.
+
+3. COMO O ARQUIVO FACEBOOK_COMBINED.TXT FOI LIDO
+
+O arquivo da Atividade I tinha uma primeira linha com o numero de vertices e arestas. O facebook_combined.txt nao tem cabecalho, cada linha ja e direto uma aresta (v1 v2). Como a funcao criar_grafo precisa saber o numero de vertices antes de comecar, a leitura foi feita em duas passadas: a primeira so percorre o arquivo para descobrir o maior indice de vertice e contar quantas linhas existem; a segunda volta ao inicio do arquivo (rewind) e de fato insere cada aresta no grafo. Como o dataset nao tem peso, cada aresta recebeu peso fictício 1.
+
+4. NOVAS FUNCOES E DECISOES DE PROJETO
+
+- obter_grau(grafo, vertice): conta os nos da lista de adjacencia do vertice. Complexidade O(grau do vertice).
+
+- exibir_amigos_comuns(grafo, v1, v2): em vez de comparar as duas listas de amigos uma por uma (o que seria mais lento), foi usado um vetor de presenca indexado pelo numero do usuario. Marca-se cada amigo de v1 nesse vetor e depois percorre-se a lista de amigos de v2, verificando em tempo constante se cada um tambem esta marcado. Complexidade O(grau de v1 + grau de v2).
+
+- busca_largura_caminho(grafo, origem, destino): e a Busca em Largura (BFS) apresentada em sala, usando fila e marcacao de vertices visitados, adaptada para guardar quem descobriu cada vertice (predecessor). Ao chegar no destino, o caminho mais curto e reconstruido voltando pelos predecessores até a origem. A busca para imediatamente quando o destino e encontrado. A BFS foi escolhida em vez da Busca em Profundidade porque ela garante o caminho com o MENOR numero de arestas, que e exatamente o que significa "caminho de amigos mais curto". Complexidade O(vertices + arestas) no pior caso.
+
+- exibir_caminho: apenas formata o caminho encontrado para impressao (ex: 0 -> 173 -> 414 -> 4038), ou avisa que os dois usuarios nao estao conectados.
+
+5. TESTES REALIZADOS
+
+- Compilacao com -Wall -Wextra: nenhum warning.
+- Grafo pequeno feito a mao (12 vertices): grau, amigos em comum e caminho minimo confirmados manualmente, item por item.
+- Grafo sintetico de 4039 vertices e 88234 arestas (mesma escala do dataset real): leitura e consultas praticamente instantaneas.
+- Teste com valgrind (checagem de memoria): zero erros, zero vazamentos.
+- Execucao com o arquivo real facebook_combined.txt: 4039 vertices e 88234 arestas carregados, numeros que conferem com os valores oficiais do dataset do SNAP.
+
+Exemplo de saida real do programa:
+Usuario 0 possui 347 amigos.
+Usuario 4038 possui 9 amigos.
+Caminho minimo (5 arestas): 0 -> 173 -> 414 -> 594 -> 4031 -> 4038
+Usuario 107 possui 1045 amigos.
+
+6. CONCLUSAO
+
+O grafo de amizades do Facebook foi carregado com sucesso usando a mesma estrutura de lista de adjacencia da Atividade I, sem precisar alterar a struct do grafo. As tres perguntas exigidas (numero de amigos, amigos em comum e caminho entre dois usuarios) foram resolvidas com algoritmos de complexidade linear em relacao ao grau dos vertices envolvidos, ou em relacao ao tamanho total do grafo no caso da busca em largura, garantindo respostas rapidas mesmo em um grafo com quase 90 mil arestas.
