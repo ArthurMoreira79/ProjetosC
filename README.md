@@ -1,2 +1,3 @@
 # ProjetosC
-Projetos de Fundamentos de Programação e Análise e Estrutura de Dados
+
+Aqui eu guardo meus projetos em C, feitos em estudos pessoais ou em labs simples da faculdade.
